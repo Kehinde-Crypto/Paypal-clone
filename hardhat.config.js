@@ -1,15 +1,17 @@
 require("@nomicfoundation/hardhat-toolbox");
-require("@nomiclabs/hardhat-etherscan")
-const dotenv = require("@nomiclabs/dotenv");
-dotenv.config();
+// require("@nomiclabs/hardhat-etherscan")
+require('dotenv').config();
+const PRIVATE_KEY = process.env.PRIVATE_KEY;
 
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
-  solidity: "0.8.28",
+  solidity: "0.8.24",
   networks:{
-   mumbai:{
-    url:process.env.POLYGON_MUMBAI ,
-    accounts:[process.env.POLYGON_KEY],
+    zkSyncMainnet:{
+    url:process.env.ZKSYNC_MAINNET,
+    ethNetwork:"mainnet",
+    zksync:true,
+    accounts:[PRIVATE_KEY],
    }
   },
   etherscan:{

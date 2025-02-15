@@ -1,8 +1,11 @@
 {
   "devDependencies": {
+    "@matterlabs/hardhat-zksync-deploy": "^1.6.0",
+    "@matterlabs/hardhat-zksync-solc": "^1.2.5",
     "@nomicfoundation/hardhat-toolbox": "^5.0.0",
     "@nomiclabs/hardhat-etherscan": "^3.1.8",
     "dotenv": "^16.4.7",
+    "ethers": "^6.13.5",
     "hardhat": "^2.22.18"
   }
 }

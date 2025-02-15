@@ -20,6 +20,7 @@ contract Paypal {
         string name;
         address otherPartyAddress;
         string otherPartyName;
+        string message;
     }
     struct userName {
         string name;
@@ -52,7 +53,6 @@ contract Paypal {
 
     function payRequest(uint256 _request) public payable {
         require(_request < requests[msg.sender].length, "No such");
-        uint256 myRequests;
         request[] storage myRequests = requests[msg.sender];
         request storage payableRequest = myRequests[_request];
 
@@ -98,20 +98,19 @@ contract Paypal {
         returns (
             address[] memory,
             uint256[] memory,
-            uint256[] memory,
             string[] memory,
             string[] memory
         )
     {
         address[] memory addrs = new address[](requests[_user].length);
-        uint256[] memory amut = new uint256[]()(requests[_user].length);
-        uint256[] memory msge = new string[]()(requests[_user].length);
-        string[] memory nme = new string[]()(requests[_user].length);
+        uint256[] memory amut = new uint256[](requests[_user].length);
+        string[] memory msge = new string[](requests[_user].length);
+        string[] memory nme = new string[](requests[_user].length);
         for (uint i = 0; i < requests[_user].length; i++) {
             request storage myRequests = requests[_user][i];
             addrs[i] = myRequests.requestor;
             amut[i] = myRequests.amount;
-            msge[i] = myRequests.amount;
+            msge[i] = myRequests.message;
             nme[i] = myRequests.name;
         }
         return (addrs, amut, msge, nme);
